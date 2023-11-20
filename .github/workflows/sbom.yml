@@ -1,0 +1,19 @@
+name: SBOM Generator
+
+on:
+  push:
+    branches: [ "sbom-generation" ]
+
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: anchore/sbom-action@v0
+        with:
+            path: ../../
+            upload-artifact: true
